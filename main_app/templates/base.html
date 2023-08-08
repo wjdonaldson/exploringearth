@@ -6,11 +6,11 @@
   <title>Document</title>
 </head>
 <body>
-
-  <h1>Home</h1>
-  <a href="{% url 'login' %}">Log In</a>
-  <a href="{% url 'logout' %}">Log Out</a>
-  <a href="{% url 'signup' %}">Sign Up</a>
+  <nav>
+    <a href="{% url 'login' %}">Log In</a>
+    <a href="{% url 'logout' %}">Log Out</a>
+    <a href="{% url 'signup' %}">Sign Up</a>
+  </nav>
   <main class="container">
     {% block content %}
     {% endblock %}
