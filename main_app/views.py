@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from .models import Destination, Comment, Photo
@@ -19,9 +20,57 @@ class DestinationList(ListView):
   fields = ['name', 'description', 'location', 'user']
 
 
-def destinations_detail(request, destination_id):
-  destination = Destination.objects.get(id=destination_id)
-  return render(request, 'destinations/detail.html', {'destination': destination})
+class DestinationDetail(DetailView):
+  model = Destination
+  fields = ['name', 'description', 'location', 'user']
+
+
+class DestinationCreate(CreateView):
+  model = Destination
+  fields = ['name', 'description', 'location']
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+
+class DestinationUpdate(UpdateView):
+  model = Destination
+  fields = ['name', 'description', 'location']
+
+
+class DestinationDelete(DeleteView):
+  model = Destination
+  success_url = '/destinations'
+
+
+class CommentList(ListView):
+  model = Comment
+  fields = ["comment", "timestamp", "user", "destination"]
+
+
+class CommentDetail(DetailView):
+  model = Comment
+  fields = ["comment", "timestamp", "user", "destination"]
+
+
+class CommentCreate(CreateView):
+  model = Comment
+  fields = ["comment", "destination"]
+
+  def form_valid(self, form):
+    form.instance.user = self.request.user
+    return super().form_valid(form)
+
+
+class CommentUpdate(UpdateView):
+  model = Comment
+  fields = ["comment"]
+
+
+class CommentDelete(DeleteView):
+  model = Comment
+  success_url = '/destinations'
 
 
 def signup(request):
