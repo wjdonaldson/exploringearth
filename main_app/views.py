@@ -1,11 +1,28 @@
 from django.shortcuts import render, redirect
+from django.views.generic import ListView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from .models import Destination, Comment, Photo
 
 
 # Create your views here.
 def home(request):
   return render(request, 'home.html')
+
+
+def about(request):
+  return render(request, 'about.html')
+
+
+class DestinationList(ListView):
+  model = Destination
+  fields = ['name', 'description', 'location', 'user']
+
+
+def destinations_detail(request, destination_id):
+  destination = Destination.objects.get(id=destination_id)
+  return render(request, 'destinations/detail.html', {'destination': destination})
+
 
 def signup(request):
   error_message = ''
