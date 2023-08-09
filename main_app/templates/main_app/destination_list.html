@@ -2,15 +2,13 @@
 {% block content %}
 
 <h1>Destinations</h1>
-
 {% for destination in destination_list %}
-<a href="{% url 'destinations_detail' destination.id %}">
-    <div class="card">
-        <div class="card-content">
-            <span class="card-title">{{ destination.name }}</span>
-            <p>Description: {{destination.description|truncatewords:20}}</p>
-        </div>
-    </div>
-</a>
+    <div align="center">
+        <span class="card-title">
+            <h2><a href="{% url 'destinations_detail' destination.id %}">
+                    {{ destination.name }}
+            </a></h2>
+        </span>
+        <p>Description: {{destination.description|truncatewords:50}}</p>
 {% endfor %}
 {% endblock %}
