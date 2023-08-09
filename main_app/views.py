@@ -1,3 +1,6 @@
+import uuid
+import boto3
+import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -103,7 +106,7 @@ def add_photo(request, destination_id):
             bucket = os.environ['S3_BUCKET']
             s3.upload_fileobj(photo_file, bucket, key)
             url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
-            Photo.objects.create(url=url, cat_id=destination_id)
+            Photo.objects.create(url=url, destination_id=destination_id)
         except Exception as e:
             print('An error occurred uploading file to S3')
             print(e)
