@@ -9,6 +9,6 @@
                     {{ destination.name }}
             </a></h2>
         </span>
-        <p>Description: {{destination.description}}</p>
+        <p>Description: {{destination.description|truncatewords:50}}</p>
 {% endfor %}
 {% endblock %}
