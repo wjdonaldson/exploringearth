@@ -8,7 +8,6 @@ urlpatterns = [
   path('destinations/', views.DestinationList.as_view(), name='destinations_list'),
   path('destinations/<int:pk>/', views.DestinationDetail.as_view(), name='destinations_detail'),
   path('destinations/create/', views.DestinationCreate.as_view(), name='destinations_create'),
-   path('destinations/<int:destination_id>/add_photo/', views.add_photo, name='add_photo'),
   path('destinations/<int:pk>/update/', views.DestinationUpdate.as_view(), name='destinations_update'),
   path('destinations/<int:pk>/delete/', views.DestinationDelete.as_view(), name='destinations_delete'),
   path('comments/', views.CommentList.as_view(), name='comments_index'),
