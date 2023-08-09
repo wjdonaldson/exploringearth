@@ -17,7 +17,7 @@
         </div>
     </div>
     <div class="col s6">
-        <a href="{% url "comment_create" destination.id %}">Add a Comment</a>
+        <a href="{% url "comments_create" destination_id=destination.id%}">Add a Comment</a>
         <br>
         <table class="striped">
             <thead>
@@ -32,7 +32,7 @@
                     <tr>
                         <td>{{ comment.user }}</td>
                         <td>{{ comment.timestamp }}</td>
-                        <td class="comment_comment">{{ comment.comment|truncatewords:30 }}</td>
+                        <td class="comment_comment">{{ comment.comment|truncatewords:30 }}<a href="{% url 'comments_detail' comment.id %}">show more</a></td>
                     </tr>
                 {% endfor %}
             </tbody>
