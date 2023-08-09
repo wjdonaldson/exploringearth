@@ -72,7 +72,6 @@ class CommentDelete(DeleteView):
   model = Comment
   success_url = '/destinations'
 
-
 def signup(request):
   error_message = ''
   if request.method == 'POST':
