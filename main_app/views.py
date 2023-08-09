@@ -3,6 +3,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Destination, Comment, Photo
 
 
@@ -15,46 +17,64 @@ def about(request):
   return render(request, 'about.html')
 
 
-class DestinationList(ListView):
+class DestinationList(LoginRequiredMixin, ListView):
   model = Destination
   fields = ['name', 'description', 'location', 'user']
 
 
-class DestinationDetail(DetailView):
+class DestinationDetail(LoginRequiredMixin, DetailView):
   model = Destination
   fields = ['name', 'description', 'location', 'user']
 
 
-class DestinationCreate(CreateView):
+class DestinationCreate(LoginRequiredMixin, UserPassesTestMixin, CreateView):
   model = Destination
   fields = ['name', 'description', 'location']
+
+  def test_func(self):
+	  return self.request.user.is_superuser
+  
+  def handle_no_permission(self):
+    return redirect('/')
 
   def form_valid(self, form):
     form.instance.user = self.request.user
     return super().form_valid(form)
 
 
-class DestinationUpdate(UpdateView):
+class DestinationUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
   model = Destination
   fields = ['name', 'description', 'location']
 
+  def test_func(self):
+	  return self.request.user.is_superuser
+  
+  def handle_no_permission(self):
+    return redirect('/')
 
-class DestinationDelete(DeleteView):
+
+class DestinationDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
   model = Destination
   success_url = '/destinations'
 
+  def test_func(self):
+	  return self.request.user.is_superuser
+  
+  def handle_no_permission(self):
+    return redirect('/')
 
-class CommentList(ListView):
+
+class CommentList(LoginRequiredMixin, ListView):
   model = Comment
   fields = ["comment", "timestamp", "user", "destination"]
 
 
-class CommentDetail(DetailView):
+class CommentDetail(LoginRequiredMixin, DetailView):
   model = Comment
   fields = ["comment", "timestamp", "user", "destination"]
 
 
-class CommentCreate(CreateView):
+class CommentCreate(LoginRequiredMixin, CreateView):
   model = Comment
   fields = ["comment", "destination"]
 
@@ -63,14 +83,31 @@ class CommentCreate(CreateView):
     return super().form_valid(form)
 
 
-class CommentUpdate(UpdateView):
+class CommentUpdate(LoginRequiredMixin, UpdateView):
   model = Comment
   fields = ["comment"]
 
 
-class CommentDelete(DeleteView):
+class CommentDelete(LoginRequiredMixin, DeleteView):
   model = Comment
   success_url = '/destinations'
+
+
+@login_required
+def add_photo(request, destination_id):
+    photo_file = request.FILES.get('photo-file', None)
+    if photo_file:
+        s3 = boto3.client('s3')
+        key = uuid.uuid4().hex[:6] + photo_file.name[photo_file.name.rfind('.'):]
+        try:
+            bucket = os.environ['S3_BUCKET']
+            s3.upload_fileobj(photo_file, bucket, key)
+            url = f"{os.environ['S3_BASE_URL']}{bucket}/{key}"
+            Photo.objects.create(url=url, cat_id=destination_id)
+        except Exception as e:
+            print('An error occurred uploading file to S3')
+            print(e)
+    return redirect('detail', pk=destination_id)
 
 
 def signup(request):
