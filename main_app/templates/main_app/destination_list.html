@@ -2,9 +2,6 @@
 {% block content %}
 
 <h1>Destinations</h1>
-<div align="right">
-    <h2><a href="{% url 'destinations_create' %}">Add Destination</a></h2>
-</div>
 {% for destination in destination_list %}
     <div align="center">
         <span class="card-title">
