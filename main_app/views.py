@@ -11,17 +11,12 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Destination, Comment, Photo
 
 
-# Create your views here.
 def home(request):
-     # Getting all the stuff from database
-    destinations = Destination.objects.all();
-
-    # Creating a dictionary to pass as an argument
+    destinations = Destination.objects.all()
+    print(f"number of destinations - {len(destinations)}")
     context = { 'destinations' : destinations }
-
-    # Returning the rendered html
     return render(request, "home.html", context)
-    #return render(request, "home.html")
+
 
 def about(request):
     return render(request, "about.html")

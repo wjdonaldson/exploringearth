@@ -36,11 +36,6 @@ urlpatterns = [
         views.add_photo,
         name="add_photo",
     ),
-    path(
-        "destinations/<int:destination_id>/gallery/",
-        views.gallery,
-        name="gallery",
-    ),
     path("comments/", views.CommentList.as_view(), name="comments_index"),
     path("comments/<int:pk>/", views.CommentDetail.as_view(), name="comments_detail"),
     path(
