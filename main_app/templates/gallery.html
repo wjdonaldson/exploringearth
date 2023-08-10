@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Photo Gallery</h1>        
+{% for photo in photos %}
+<img src="{{photo.url}}" width="400" style="vertical-align:middle">
+{% empty %}
+No Photos Uploaded
+{% endfor %}
+{% endblock %}

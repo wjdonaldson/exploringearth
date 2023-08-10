@@ -103,6 +103,7 @@ class CommentDelete(LoginRequiredMixin, DeleteView):
     model = Comment
     success_url = "/destinations"
 
+
 @login_required
 def add_photo(request, destination_id):
     photo_file = request.FILES.get("photo-file", None)
@@ -118,6 +119,7 @@ def add_photo(request, destination_id):
             print("An error occurred uploading file to S3")
             print(e)
     return redirect("destinations_detail", pk=destination_id)
+
 
 def signup(request):
     error_message = ""
@@ -135,4 +137,3 @@ def signup(request):
 
 class PhotoList(LoginRequiredMixin, ListView):
     model = Photo
-
