@@ -1,14 +1,14 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Destinations</h1>
+<h1 align="center">Destinations</h1>
 {% for destination in destination_list %}
-    <div align="center">
+    <div>
         <span class="card-title">
             <h2><a href="{% url 'destinations_detail' destination.id %}">
                     {{ destination.name }}
             </a></h2>
         </span>
-        <p>Description: {{destination.description|truncatewords:50}}</p>
+        <p>{{destination.description|truncatewords:50}}</p>
 {% endfor %}
 {% endblock %}
