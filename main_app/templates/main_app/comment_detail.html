@@ -6,9 +6,13 @@
 <br>
 <p>{{comment.comment}}</p>
 <br>
-<div align="right">
-    <a href="{% url "comments_update" comment.id %}">Edit</a> ||
-    <a href="{% url "comments_delete" comment.id %}">Delete</a>
+<div>
+    <div align="left"><a href="{% url "destinations_detail" comment.destination_id %}">Go Back</a>
+    </div>
+    <div align="right">
+        <a href="{% url "comments_update" comment.id %}">Edit</a> ||
+        <a href="{% url "comments_delete" comment.id %}">Delete</a>
+    </div>
 </div>
 
 {% endblock %}
