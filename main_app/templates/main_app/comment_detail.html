@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1>{{comment.user}}'s comment for {{comment.destination.name}}</h1>
+<h6>{{comment.timestamp}}</h6>
+<br>
+<p>{{comment.comment}}</p>
+<br>
+<div class="card-action">
+    <a href="{% url "comments_update" comment.id %}">Edit</a>
+    <a href="{% url "comments_delete" comment.id %}">Delete</a>
+</div>
+
+{% endblock %}
+

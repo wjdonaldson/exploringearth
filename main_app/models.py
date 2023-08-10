@@ -16,7 +16,7 @@ class Destination(models.Model):
         return f"{self.name} ({self.id})"
 
     def get_absolute_url(self):
-        return reverse("detail", kwargs={"destination_id": self.id})
+        return reverse("destinations_detail", kwargs={"destination_id": self.id})
 
 
 class Comment(models.Model):
@@ -29,7 +29,7 @@ class Comment(models.Model):
         return f"{self.user}'s comment on {self.destination}"
 
     def get_absolute_url(self):
-        return reverse("detail", kwargs={"destination_id": self.destination_id})
+        return reverse("destinations_detail", kwargs={"pk": self.destination_id})
 
 
 class Photo(models.Model):
