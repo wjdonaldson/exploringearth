@@ -1,74 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
-<h1>About Us</h1>
-<div class="row">
-  <div class="col-3">
-    <h5>Priyanka Nair</h5>
-  </div>
-  <div class="col-3">
-    <h5>Jay Donaldson</h5>
-  </div>
-  <div class="col-3">
-    <h5>Malcolm Griffin</h5>
-  </div>
-  <div class="col-3">
-    <h5>Gary Lopez</h5>
-  </div>
-</div>
-<div class="row">
-  <div class="col-3">
-    <img src="{% static 'img/Priyanka.JPG' %}" width='200'>
-  </div>
-  <div class="col-3">
-    <img src="{% static 'img/Jay.png' %}" width='200'>
-  </div>
-  <div class="col-3">
-    <img src="{% static 'img/Malcolm.jpeg' %}" width='200'>
-  </div>
-  <div class="col-3">
-    <img src="{% static 'img/Gary.jpeg' %}" width='200'>
-  </div>
-</div>
-<div class="row">
-  <div class="col-3">
-    <h6>Designer</h6>
-  </div>
-  <div class="col-3">
-    <h6>Middle Management</h6>
-  </div>
-  <div class="col-3">
-    <h6>Developer</h6>
-  </div>
-  <div class="col-3">
-    <h6>The Other Developer</h6>
-  </div>
-</div>
-<div class="row">
-  <div class="col-3 align-right">
-    <ul>
-      <li>Design</li>
-      <li>Documentor</li>
-      <li>Templates</li>
-      <li>Content</li>
+<section class="py-5">
+  <div class="container text-center">
+    <h1>Who we are</h1>
+  </div><img class="w-100 py-5" src="{% static 'img/about-banner.jpg' %}" alt="">
+  <div class="container">
+    <div class="row gy-5">
+      <div>
+        <p class="lead first-letter-styled lh-4">
+          We love to travel and with it we decided to make a blog that will cover most of the activities that can be done in the area. We also strive to find the best prices since not everyone has thousands of dollars as pocket change.
+          We document our stay at locations around the world while maintaining a budgeting, so everyone can see how much you actually need to enjoy a trip out. There’s a lot of little gems that aren't expensive in really popular places and you don't really need a lot of money to still make memorable moments.
+        </p>
+        <div class="px-lg-5 mb-5">
+          <blockquote class="blockquote-custom">
+            You want to travel but no place goes in detail of what activities and attractions are in the area with pricing in mind.  
+          </blockquote>
+        </div>
+        <h2>Team</h2>
+        <p class="text-muted mb-0">
+          We go into detail about what can be done in the destinations we’ve covered while maintaining a budget. Every wanted to travel and not spend too much? We got you covered with everything we found to be budget friendly and exceptional, along with things that may not be worth the cheap price.  
+      </div>   
+      <div class="col-lg-3">
+        <h5 class="mb-1">Priyanka Nair</h5>
+        <img src="{% static 'img/Priyanka.JPG' %}" alt="" width="200">
+        <p class="small text-primary text-uppercase mb-0">Designer</p>
+        <p class="small text-muted">Design, Document, Templates, Content</p>
+      </div>
+      <div class="col-lg-3">
+        <h5 class="mb-1">Jay Donaldson</h5>
+        <img src="{% static 'img/Jay.png' %}" alt="" width="190">
+        <p class="small text-primary text-uppercase mb-0">Middle Management</p>
+        <p class="small text-muted">GitHub Manager, Authentication, Views, Templates, Content</p>
+      </div>
+      <div class="col-lg-3">
+        <h5 class="mb-1">Malcolm Griffin</h5>
+        <img src="{% static 'img/Malcolm.jpeg' %}" alt="" width="190">
+        <p class="small text-primary text-uppercase mb-0">Developer</p>
+        <p class="small text-muted">Scrum Master, Templates, Content</p>          
+      </div>
+      <div class="col-lg-3">
+        <h5 class="mb-1">Gary Lopez</h5>
+        <img src="{% static 'img/Gary.jpeg' %}" alt="" width="190">
+        <p class="small text-primary text-uppercase mb-0">Developer</p>
+        <p class="small text-muted">Database Manager, Templates, content</p>
+      </div>      
     </div>
-    <div class="col-3">
-      <li>GitHub Manager</li>
-      <li>Authentication</li>
-      <li>Views</li>
-      <li>Templates</li>
-      <li>Content</li>
   </div>
-  <div class="col-3">
-    <li>Scrum Master</li>
-    <li>Templates</li>
-    <li>Content</li>
-  </div>
-  <div class="col-3">
-    <li>Database Manager</li>
-    <li>Templates</li>
-    <li>Content</li>
-  </div>
-</div>
+</section>
+
 
 {% endblock %}
