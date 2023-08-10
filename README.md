@@ -37,8 +37,8 @@ Technologies Used:-
 7-HEROKU-For Deployment
 
 GETTING STARTED:-
-
+https://desolate-crag-39810-964c0b015f4a.herokuapp.com/
 
 NEXT STEP:- Future Enhancements
 1-User should able to search destination
-2-Should able categorise itenary ,food,stay.
+2-Should able categorise Itenary ,Food,Hotel.
