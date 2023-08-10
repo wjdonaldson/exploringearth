@@ -9,21 +9,15 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="all,follow">
-    <!-- Swiper slider-->
     <link rel="stylesheet" href="{% static 'css/vendor/swiper/swiper-bundle.min.css' %}">
-    <!-- Google fonts-->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:300,400&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface&amp;display=swap">
-    <!-- theme stylesheet-->
     <link rel="stylesheet" href="{% static 'css/style.default.css' %}" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
     <link rel="stylesheet" type="text/css" href="{% static 'css/custom.css' %}">
 
-    <!-- Favicon-->
     <link rel="shortcut icon" href="{% static 'img/favicon.png' %}">
   </head>
   <body>
-    <!-- Header-->
     <header class="header">
       <div class="py-2 bg-dark text-white">
         <div class="container py-1">
@@ -62,16 +56,15 @@
         </div>
       </div>
       <nav class="navbar navbar-expand-lg navbar-light bg-white py-4">
-        <div class="container text-center"><a class="navbar-brand mx-auto" href="#"><img  src="{% static 'img/logo.jpg' %}" alt="" width="400">
+        <div class="container text-center">
+          <a class="navbar-brand mx-auto" href="/about"><img  src="{% static 'img/logo.jpg' %}" alt="" width="400"></a></div>
       </nav>
-      <!-- Navbar 2 -->
       <nav class="navbar navbar-expand-lg navbar-light border-gray py-2 bg-light">
         <div class="container">
-          <button class="navbar-toggler navbar-toggler-right mx-auto border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse text-center" id="navbarSupportedContent">
+          <div class="navbar-collapse collapse show" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
               <li class="nav-item px-1">
-                <!-- Link--><a class="nav-link active" href="/">Home</a>
+                <a class="nav-link" href="/">Home</a>
               </li>
               {% if user.is_superuser %}
               <li class="nav-item px-1">
@@ -113,21 +106,14 @@
           </div>
           <div class="col-lg-4 text-center text-lg-end">
             <p class="small text-muted text-uppercase mb-0">Exploring Earth ! </p>
-            <!-- If you want to remove the backlink, please purchase the Attribution-Free License. See details in readme.txt or license.txt. Thanks!-->
           </div>
         </div>
       </div>
     </footer>
-    <!-- JavaScript files-->
     <script src="{% static 'css/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
     <script src="{% static 'css/vendor/swiper/swiper-bundle.min.js' %}"></script>
     <script src="{% static 'js/front.js' %}"></script>
     <script>
-      // ------------------------------------------------------- //
-      //   Inject SVG Sprite - 
-      //   see more here 
-      //   https://css-tricks.com/ajaxing-svg-sprite/
-      // ------------------------------------------------------ //
       function injectSvgSprite(path) {
       
           var ajax = new XMLHttpRequest();
@@ -140,14 +126,9 @@
           document.body.insertBefore(div, document.body.childNodes[0]);
           }
       }
-      // this is set to BootstrapTemple website as you cannot 
-      // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
-      // while using file:// protocol
-      // pls don't forget to change to your domain :)
       injectSvgSprite('https://bootstraptemple.com/files/icons/orion-svg-sprite.svg'); 
       
     </script>
-    <!-- FontAwesome CSS - loading as last, so it doesn't block rendering-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   </body>
 </html>
