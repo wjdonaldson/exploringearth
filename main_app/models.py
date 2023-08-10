@@ -16,7 +16,7 @@ class Destination(models.Model):
         return f"{self.name} ({self.id})"
 
     def get_absolute_url(self):
-        return reverse("destinations_detail", kwargs={"destination_id": self.id})
+        return reverse("destinations_detail", kwargs={"pk": self.id})
 
 
 class Comment(models.Model):

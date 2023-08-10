@@ -94,7 +94,7 @@ class CommentUpdate(LoginRequiredMixin, UpdateView):
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
     model = Comment
-    success_url = "/destinations"
+    # success_url = "/destinations"
 
 
 @login_required
