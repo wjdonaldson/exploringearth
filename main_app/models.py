@@ -11,6 +11,7 @@ class Destination(models.Model):
     description = models.TextField()
     location = models.CharField(max_length=100)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    timestamp = models.DateTimeField(auto_now=True)
 
     def __str__(self):
         return f"{self.name} ({self.id})"
@@ -35,6 +36,7 @@ class Comment(models.Model):
 class Photo(models.Model):
     url = models.CharField(max_length=200)
     destination = models.ForeignKey(Destination, on_delete=models.CASCADE)
+    caption = models.CharField(max_length=100)
 
     def __str__(self):
         return f"Photo for destination_id: {self.destination_id} @{self.url}"
