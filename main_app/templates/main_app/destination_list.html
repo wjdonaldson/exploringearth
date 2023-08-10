@@ -1,14 +1,30 @@
 {% extends "base.html" %}
 {% block content %}
 
-<h1>Destinations</h1>
+<h1 align="center">Destinations</h1>
 {% for destination in destination_list %}
-    <div align="center">
-        <span class="card-title">
-            <h2><a href="{% url 'destinations_detail' destination.id %}">
-                    {{ destination.name }}
-            </a></h2>
-        </span>
-        <p>Description: {{destination.description|truncatewords:50}}</p>
+
+<div class="row align-items-stretch gx-lg-0 py-3">
+    <div class="col-lg-6 order-2 order-lg-1 bg-full-left">
+      <div class="h-100 bg-light d-flex align-items-center">
+        <div class="py-5 px-4">
+          <h3 class="h4"> <a class="text-reset" href="{% url 'destinations_detail' destination.id %}">
+                {{ destination.name }}
+          </a></h3>
+          <div class="text-muted">
+            <p>{{destination.description|truncatewords:50}}</p>
+          </div>
+          <ul class="list-inline small text-uppercase mb-0">
+            <li class="list-inline-item align-middle"><img class="rounded-circle shadow-sm" src="img/person-1.jpg" alt="" width="30"></li>
+            <li class="list-inline-item me-0 text-gray align-middle">By </li>
+            <li class="list-inline-item align-middle me-0"><a class="fw-bold reset-anchor" href="#!">{{ destination.user.username }}</a></li>
+            <li class="list-inline-item text-gray align-middle me-0">|</li>
+            <li class="list-inline-item text-gray align-middle">Jan, 2019</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 order-1 order-lg-2"><a class="d-block h-100 bg-center bg-cover" href="{% url 'destinations_detail' destination.id %}" style="background: url({{destination.photo_set.first.url}})"></a></div>
+  </div>
 {% endfor %}
 {% endblock %}

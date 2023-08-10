@@ -1,85 +1,36 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block content %}
- <h1>Featured Destinations</h1>        
+<h1>Featured Destinations</h1>        
+<div class="swiper destinations-slider swiper-padding">
+    <div class="swiper-wrapper">
+        {% for destination in destinations %}
+        <div class="swiper-slide h-auto">
+            <a class="destination d-flex align-items-end bg-center bg-cover" href="{% url 'destinations_detail' destination.id %}" style="background: url({{destination.photo_set.first.url}})">
+                <div class="destination-inner w-100 text-center text-white index-forward has-transition">
+                    <h2 class="h3 mb-4">
+                    {{destination.name}}
+                    </h2>
+                    <p class="small text-uppercase mb-3"> 
+                    {{destination.location}}
+                    </p>
+                    <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
+                </div>
+            </a>
+        </div>
+        {% endfor %}
     </div>
-    <div class="swiper destinations-slider swiper-padding">
-      <div class="swiper-wrapper">
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-4.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Paris</p>
-              <h2 class="h3 mb-4">France</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-2.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Tokyo</p>
-              <h2 class="h3 mb-4">Japan</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-3.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Madrid</p>
-              <h2 class="h3 mb-4">Spain</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-1.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Rome</p>
-              <h2 class="h3 mb-4">Italy</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-5.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Jakarta</p>
-              <h2 class="h3 mb-4">Indonesia</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-6.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Ottawa</p>
-              <h2 class="h3 mb-4">Canada</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-7.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Cairo</p>
-              <h2 class="h3 mb-4">Egypt</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-1.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Berlin</p>
-              <h2 class="h3 mb-4">Germany</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-1.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Bangkok</p>
-              <h2 class="h3 mb-4">Thailand</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-1.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">Malé</p>
-              <h2 class="h3 mb-4">Maldives</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-        <div class="swiper-slide h-auto"><a class="destination d-flex align-items-end bg-center bg-cover" href="post.html" style="background: url({% static 'img/travel-home-1.jpg' %})">
-            <div class="destination-inner w-100 text-center text-white index-forward has-transition">
-              <p class="small text-uppercase mb-0">New York</p>
-              <h2 class="h3 mb-4">United States</h2>
-              <div class="btn btn-primary w-100 destination-btn text-white">Discover</div>
-            </div></a></div>
-      </div>
-      <div class="swiper-button-prev swiper-custom-nav text-uppercase letter-spacing-0">
+    <div class="swiper-button-prev swiper-custom-nav text-uppercase letter-spacing-0">
         <svg class="svg-icon svg-icon me-1">
           <use xlink:href="#arrow-left-1"> </use>
-        </svg><span class="text-sm">Prev</span>
-      </div>
-      <div class="swiper-button-next swiper-custom-nav text-uppercase letter-spacing-0"><span class="text-sm">Next</span>
-        <svg class="svg-icon svg-icon ms-1">
-          <use xlink:href="#arrow-right-1"> </use>
         </svg>
-      </div>
+        <span class="text-sm">Prev</span>
+    </div>
+    <div class="swiper-button-next swiper-custom-nav text-uppercase letter-spacing-0">
+        <span class="text-sm">Next</span>
+        <svg class="svg-icon svg-icon ms-1">
+            <use xlink:href="#arrow-right-1"> </use>
+        </svg>
+    </div>
+</div>
 {% endblock %}

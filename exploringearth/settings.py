@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-import os
+
 from pathlib import Path
 
 import environ
@@ -82,11 +82,7 @@ WSGI_APPLICATION = "exploringearth.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ["DATABASE_NAME"],
-        "USER": os.environ["DATABASE_USER"],
-        "PASSWORD": os.environ["DATABASE_PASSWORD"],
-        "HOST": os.environ["DATABASE_SERVER"],
-        "PORT": "5432",
+        "NAME": "exploringearth",
     }
 }
 
@@ -131,6 +127,7 @@ STATIC_URL = "/static/"
 
 LOGIN_REDIRECT_URL = "/"
 
+LOGOUT_REDIRECT_URL = "/"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -140,3 +137,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 import django_on_heroku
 
 django_on_heroku.settings(locals())
+
+# For deploying Django on Heroku
+import django_on_heroku
+
+django_on_heroku.settings(locals())
+DATABASES["default"]["CONN_MAX_AGE"] = 0

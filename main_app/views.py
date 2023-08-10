@@ -11,9 +11,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Destination, Comment, Photo
 
 
-# Create your views here.
 def home(request):
-    return render(request, "home.html")
+    destinations = Destination.objects.all()
+    print(f"number of destinations - {len(destinations)}")
+    context = { 'destinations' : destinations }
+    return render(request, "home.html", context)
 
 
 def about(request):
@@ -111,7 +113,7 @@ def add_photo(request, destination_id):
         except Exception as e:
             print("An error occurred uploading file to S3")
             print(e)
-    return redirect("detail", pk=destination_id)
+    return redirect("destinations_detail", pk=destination_id)
 
 
 def signup(request):
@@ -127,3 +129,6 @@ def signup(request):
     form = UserCreationForm()
     context = {"form": form, "error_message": error_message}
     return render(request, "registration/signup.html", context)
+
+class PhotoList(LoginRequiredMixin, ListView):
+    model = Photo
