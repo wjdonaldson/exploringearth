@@ -48,7 +48,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -84,12 +84,12 @@ WSGI_APPLICATION = 'exploringearth.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        # 'NAME': 'exploringearth',
-        'NAME': os.environ['DATABASE_NAME'],
-        'USER': os.environ['DATABASE_USER'],
-        'PASSWORD': os.environ['DATABASE_PASSWORD'],
-        'HOST': os.environ['DATABASE_SERVER'],
-        'PORT': '5432',
+        'NAME': 'exploringearth',
+        # 'NAME': os.environ['DATABASE_NAME'],
+        # 'USER': os.environ['DATABASE_USER'],
+        # 'PASSWORD': os.environ['DATABASE_PASSWORD'],
+        # 'HOST': os.environ['DATABASE_SERVER'],
+        # 'PORT': '5432',
     }
 }
 
