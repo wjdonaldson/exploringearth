@@ -17,6 +17,11 @@ urlpatterns = [
         name="destinations_create",
     ),
     path(
+        "destinations/<int:destination_id>/add_photo/",
+        views.add_photo,
+        name='add_photo',
+    ),
+    path(
         "destinations/<int:pk>/update/",
         views.DestinationUpdate.as_view(),
         name="destinations_update",
@@ -49,4 +54,6 @@ urlpatterns = [
         name="comments_delete",
     ),
     path("accounts/signup/", views.signup, name="signup"),
+    path("gallery/", views.PhotoList.as_view(), name="gallery"),
+   
 ]
