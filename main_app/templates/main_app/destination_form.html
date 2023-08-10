@@ -9,9 +9,9 @@
   {% endif %}
   <form action="" method="post"> 
     {% csrf_token %}
-    <table> 
+    <table>
       {{ form.as_table }}
     </table>
-    <input type="submit" value="Submit!" class="btn">
+    <input type="submit" value="Submit!" class="btn btn-dark">
   </form>
 {% endblock %}
