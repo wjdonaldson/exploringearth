@@ -32,7 +32,7 @@ urlpatterns = [
         name="destinations_delete",
     ),
     path(
-        "destinations/<int:pk>/add_photo/",
+        "destinations/<int:destination_id>/add_photo/",
         views.add_photo,
         name="add_photo",
     ),

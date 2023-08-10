@@ -47,7 +47,15 @@
             </div>
             <div class="col-lg-4 d-none d-lg-block text-end">
               <ul class="list-inline mb-0 text-sm">
+                {% if user.is_superuser %}
+                <li class="list-inline-item"><a class="reset-anchor" href="/admin">Admin</a></li>
+                <li class="list-inline-item">|</li>
+                {% endif %}
+                {% if user.is_authenticated %}
+                <li class="list-inline-item"><a class="reset-anchor" href="{% url 'logout' %}">Logout</a></li>
+                {% else %}
                 <li class="list-inline-item"><a class="reset-anchor" href="{% url 'login' %}">Login</a></li>
+                {% endif %}
               </ul>              
             </div>
           </div>
