@@ -1,6 +1,6 @@
+import os
 import uuid
 import boto3
-import os
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
@@ -13,8 +13,15 @@ from .models import Destination, Comment, Photo
 
 # Create your views here.
 def home(request):
-    return render(request, "home.html")
+     # Getting all the stuff from database
+    destinations = Destination.objects.all();
 
+    # Creating a dictionary to pass as an argument
+    context = { 'destinations' : destinations }
+
+    # Returning the rendered html
+    return render(request, "home.html", context)
+    #return render(request, "home.html")
 
 def about(request):
     return render(request, "about.html")
@@ -114,12 +121,6 @@ def add_photo(request, destination_id):
     return redirect("destinations_detail", pk=destination_id)
 
 
-@login_required
-def gallery(request, destination_id):
-    photos = Photo.objects.filter(destination_id=destination_id)
-    return render(request, "gallery.html", {"photos": photos})
-
-
 def signup(request):
     error_message = ""
     if request.method == "POST":
@@ -133,3 +134,6 @@ def signup(request):
     form = UserCreationForm()
     context = {"form": form, "error_message": error_message}
     return render(request, "registration/signup.html", context)
+
+class PhotoList(LoginRequiredMixin, ListView):
+    model = Photo
