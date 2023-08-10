@@ -78,7 +78,6 @@ class CommentDetail(LoginRequiredMixin, DetailView):
     model = Comment
     fields = ["comment", "timestamp", "user", "destination"]
 
-
 class CommentCreate(LoginRequiredMixin, CreateView):
     model = Comment
     fields = ["comment"]
