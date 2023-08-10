@@ -144,6 +144,6 @@ LOGOUT_REDIRECT_URL = '/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # For deploying Django on Heroku
-import django_on_heroku
-django_on_heroku.settings(locals())
+# import django_on_heroku
+# django_on_heroku.settings(locals())
 DATABASES['default']['CONN_MAX_AGE'] = 0
