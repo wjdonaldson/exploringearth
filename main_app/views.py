@@ -94,7 +94,7 @@ class CommentUpdate(LoginRequiredMixin, UpdateView):
 
 class CommentDelete(LoginRequiredMixin, DeleteView):
     model = Comment
-    # success_url = "/destinations"
+    success_url = "/destinations"
 
 
 @login_required
@@ -111,7 +111,13 @@ def add_photo(request, destination_id):
         except Exception as e:
             print("An error occurred uploading file to S3")
             print(e)
-    return redirect("detail", pk=destination_id)
+    return redirect("destinations_detail", pk=destination_id)
+
+
+@login_required
+def gallery(request, destination_id):
+    photos = Photo.objects.filter(destination_id=destination_id)
+    return render(request, "gallery.html", {"photos": photos})
 
 
 def signup(request):
