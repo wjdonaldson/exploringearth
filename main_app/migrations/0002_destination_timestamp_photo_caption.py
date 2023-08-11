@@ -13,7 +13,7 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name="destination",
             name="timestamp",
-            field=models.DateTimeField(auto_now=True),
+            field=models.DateTimeField(auto_now=True), 
         ),
         migrations.AddField(
             model_name="photo",
