@@ -1,4 +1,8 @@
 .env
 __pycache__
 .vscode
+<<<<<<< HEAD
 migrations
+=======
+migrations
+>>>>>>> fd035e290cc47ee48eafd0740b3a82525d179321
