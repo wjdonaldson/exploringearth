@@ -82,9 +82,11 @@ WSGI_APPLICATION = "exploringearth.wsgi.application"
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.postgresql",
-        "NAME": "exploringearth",
+
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'exploringearth',
+
         # 'NAME': os.environ['DATABASE_NAME'],
         # 'USER': os.environ['DATABASE_USER'],
         # 'PASSWORD': os.environ['DATABASE_PASSWORD'],
@@ -144,7 +146,8 @@ LOGOUT_REDIRECT_URL = "/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # For deploying Django on Heroku
-import django_on_heroku
 
-django_on_heroku.settings(locals())
-DATABASES["default"]["CONN_MAX_AGE"] = 0
+# import django_on_heroku
+# django_on_heroku.settings(locals())
+DATABASES['default']['CONN_MAX_AGE'] = 0
+
