@@ -4,8 +4,10 @@
 <h1>{{ destination.name }}</h1>
 <div>
     <div align="right">
+        {% if user.is_superuser %}
         <a href="{% url "destinations_update" destination.id %}">Edit</a> || 
         <a href="{% url "destinations_delete" destination.id %}">Delete</a>
+        {% endif %}
     </div>
     <p>Location: {{ destination.location }}</p>
     <p>Description: {{ destination.description }}</p>
