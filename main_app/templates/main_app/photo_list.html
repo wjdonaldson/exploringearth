@@ -8,7 +8,9 @@
   <div class="row">
     {% for photo in photo_list %}
 
-    <div class="col-lg-3 col-md-6 px-md-1 py-1"><a class="instagram-item d-block w-100 reset-anchor text-white" href="{% url 'destinations_detail' photo.destination.id %}"><img class="img-fluid" src="{{ photo.url}}" alt="">
+    <div class="col-lg-3 col-md-6 px-md-1 py-1">
+      <a class="instagram-item d-block w-100 reset-anchor text-white" href="{% url 'destinations_detail' photo.destination.id %}">
+        <img class="img-fluid img-thumbnail" src="{{ photo.url}}" alt="">
         <div class="instagram-item-overlay p-5">
           <h4>Visit {{photo.destination.name}}.</h4>
         </div></a>
