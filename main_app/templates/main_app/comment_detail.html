@@ -5,15 +5,14 @@
 <h6>{{comment.timestamp}}</h6>
 <br>
 <p>{{comment.comment}}</p>
-<br>
-<div>
-    <div align="left"><a href="{% url "destinations_detail" comment.destination_id %}">Go Back</a>
-    </div>
-    <div align="right">
-        <a href="{% url "comments_update" comment.id %}">Edit</a> ||
-        <a href="{% url "comments_delete" comment.id %}">Delete</a>
-    </div>
+<div style="float: left">
+    <a href="{% url "destinations_detail" comment.destination_id %}">Go Back</a>
 </div>
-
+<div style="float: right">
+    {% if user == comment.user %}
+    <a href="{% url "comments_update" comment.id %}">Edit</a> ||
+    <a href="{% url "comments_delete" comment.id %}">Delete</a>
+    {% endif %}
+</div>
 {% endblock %}
 
