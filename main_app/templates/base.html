@@ -22,15 +22,14 @@
       <div class="py-2 bg-dark text-white">
         <div class="container py-1">
           <div class="row align-items-center">
-            <div class="col-lg-4">
+            <div class="col-4">
               <ul class="list-inline mb-0 text-sm">
                 <li class="list-inline-item"><a class="reset-anchor" href="{% url 'about' %}">About us</a></li>
                 <li class="list-inline-item">|</li>
                 <li class="list-inline-item"><a class="reset-anchor" href="{% url 'signup' %}">Sign Up</a></li>
-               
               </ul>
             </div>
-            <div class="col-lg-4 d-none d-lg-block text-center">
+            <div class="col-4 d-block text-center">
               <ul class="list-inline mb-0 small">
                 <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-facebook-f"></i></a></li>
                 <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-twitter"></i></a></li>
@@ -39,7 +38,7 @@
                 <li class="list-inline-item"><a class="reset-anchor" href="#!"><i class="fab fa-vimeo-v"></i></a></li>
               </ul>
             </div>
-            <div class="col-lg-4 d-none d-lg-block text-end">
+            <div class="col-4 d-block text-end">
               <ul class="list-inline mb-0 text-sm">
                 {% if user.is_superuser %}
                 <li class="list-inline-item"><a class="reset-anchor" href="/admin">Admin</a></li>
@@ -57,9 +56,12 @@
       </div>
       <nav class="navbar navbar-expand-lg navbar-light bg-white py-4">
         <div class="container text-center">
-          <a class="navbar-brand mx-auto" href="/about"><img  src="{% static 'img/logo.jpg' %}" alt="" width="400"></a></div>
+          <a class="navbar-brand mx-auto" href="/about">
+            <img  src="{% static 'img/logo.jpg' %}" alt="" width="400">
+          </a>
+        </div>
       </nav>
-      <nav class="navbar navbar-expand-lg navbar-light border-gray py-2 bg-light">
+      <nav class="navbar navbar-expand-sm navbar-light border-gray py-2 bg-light">
         <div class="container">
           <div class="navbar-collapse collapse show" id="navbarSupportedContent">
             <ul class="navbar-nav mx-auto">
